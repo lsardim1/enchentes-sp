@@ -28,6 +28,52 @@ npm test             # parsers e utilitários
 ```
 No Windows com política de execução restrita, use `npm.cmd`.
 
+### Instalação no macOS (Apple Silicon ou Intel)
+
+1. Instale o **Node.js 24 LTS**, que inclui o npm, usando o instalador para macOS em [nodejs.org](https://nodejs.org/). Escolha a arquitetura do seu Mac: ARM64 para Apple Silicon ou x64 para Intel. Se já usa um gerenciador de versões do Node.js, selecione a versão 24 nele.
+2. Abra o Terminal e confira os pré-requisitos:
+
+   ```bash
+   node --version
+   npm --version
+   git --version
+   ```
+
+   O Node.js deve indicar `v24.x.x`. Se o Git não estiver disponível, execute `xcode-select --install`, conclua a instalação das ferramentas de linha de comando da Apple e abra um novo Terminal.
+
+3. Clone o repositório e instale as dependências:
+
+   ```bash
+   git clone https://github.com/lsardim1/enchentes-sp.git
+   cd enchentes-sp
+   npm ci
+   ```
+
+4. Inicie a aplicação em desenvolvimento:
+
+   ```bash
+   npm run dev
+   ```
+
+   Acesse [http://localhost:3000](http://localhost:3000). Para encerrar o servidor, pressione `Control+C` no Terminal. As funcionalidades principais não exigem chaves de API nem arquivo de ambiente; as notificações push são opcionais e precisam da configuração descrita abaixo.
+
+5. Para testar o modo de produção, encerre o servidor de desenvolvimento e execute:
+
+   ```bash
+   npm run build
+   npm start
+   ```
+
+   A aplicação continua disponível em [http://localhost:3000](http://localhost:3000). O service worker só é habilitado nesse modo.
+
+Para validar a instalação:
+
+```bash
+npm test
+npm run typecheck
+npm run lint
+```
+
 ## Push (opcional)
 Copie `.env.example` para `.env.local` e gere chaves VAPID (`node -e "console.log(require('web-push').generateVAPIDKeys())"`).
 O servidor verifica novos avisos a cada `PUSH_POLL_MINUTES` (ou via `GET /api/push/verificar` com `Authorization: Bearer $CRON_SECRET`).
