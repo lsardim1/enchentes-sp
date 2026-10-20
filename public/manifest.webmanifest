@@ -1,0 +1,15 @@
+{
+  "name": "Enchentes SP — alertas, chuva e alagamentos",
+  "short_name": "Enchentes SP",
+  "description": "Alertas da Defesa Civil/INMET, previsão de chuva e alagamentos na cidade de São Paulo.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b1320",
+  "theme_color": "#0b1320",
+  "icons": [
+    { "src": "/icone.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icone.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
